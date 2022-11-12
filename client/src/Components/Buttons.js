@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { useNavigate, Routes, Route, Link } from "react-router-dom";
 import PopupForm from './Popup.js';
@@ -10,15 +10,16 @@ const StyledButton = styled(Button)`
     justify-content: center;
     align-items: center;
     padding: 10px;
-    margin: 10px;
-    width: 30%;
-    height: 200px;
+    width: 31%;
+    margin: 13px;
+    height: 175px;
     background-color: ${props => props.color};
     &:hover {
         background-color: ${props => props.color};
     }
 
 `;
+
 
 const StyledImage = styled.img`
     width: 50px;
@@ -33,7 +34,7 @@ const StyledInnerButton = styled(Button)`
     width: 50%;
     margin: 10px;
     color: ${props => props.color};
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-weight: bold;
     background-color: white
 `;
@@ -58,6 +59,7 @@ function SingleButton(props) {
     }
 
     return (
+
         <React.Fragment>
             <StyledButton className='outer-btn' color={props.color}>
                 <StyledImage src={props.image} />
@@ -66,6 +68,8 @@ function SingleButton(props) {
                 </StyledInnerButton>
             </StyledButton>
         </React.Fragment>
+
+
     )
 }
 
@@ -73,13 +77,13 @@ function Buttons(props) {
 
 
     return (
-        <Routes>
-            {/* Route for button (Default) */}
-            <Route path="/" element={<SingleButton text={props.text} image={props.image} color={props.color} />} />
+            <Routes>
+                {/* Route for button (Default) */}
+                <Route path="/" element={<SingleButton text={props.text} image={props.image} color={props.color} />} />
 
-            {/* Route for handling a case upload */}
-            <Route path="/case-upload" element={<PopupForm />} />
-        </Routes>
+                {/* Route for handling a case upload */}
+                <Route path="/case-upload" element={<PopupForm />} />
+            </Routes>
 
     );
 }

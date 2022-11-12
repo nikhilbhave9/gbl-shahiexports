@@ -9,28 +9,7 @@ const StyledTable = styled(Table)`
 `;
 
 
-function Dashboard(props) {
-
-    const [cases, setCases] = useState([]);
-    let getURL = "http://localhost:9000/cases";
-    if (props.new === 2) {
-        getURL = "http://localhost:9000/cases/outstanding";
-    }  
-
-    async function getCases() {
-        try {
-
-            const response = await Axios.get(getURL);
-            setCases(response.data);
-        } catch (err) {
-            console.error(err);
-        }
-
-    }
-
-    useEffect(() => {
-        getCases();
-    }, []);
+function DashboardFilter(props) {
 
     return (
         <div className='mt-3'>
@@ -52,7 +31,7 @@ function Dashboard(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {cases.map((item) => {
+                    {props.filteredCases.map((item) => {
                         return (
                             <tr>
                                 <td>{item.case_number}</td>
@@ -77,4 +56,4 @@ function Dashboard(props) {
     )
 };
 
-export default Dashboard;
+export default DashboardFilter;

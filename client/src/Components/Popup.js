@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
@@ -7,17 +8,7 @@ import Axios from 'axios';
 
 function PopupForm() {
 
-    const [formData, setFormData] = useState({
-        // branch: "",
-        // reportingMethod: "",
-        // category: "",
-        // subCategory: "",
-        // priority: "",
-        // nature: "",
-        // manager: "",
-        // reporter: "",
-        // status: "",
-    });
+    const [formData, setFormData] = useState({});
 
     const setField = (field, value) => {
         setFormData({
@@ -26,6 +17,7 @@ function PopupForm() {
         });
     }
 
+    const navigate = useNavigate();
     function handleSubmit(e) {
         e.preventDefault();
         console.log(formData);
@@ -46,6 +38,8 @@ function PopupForm() {
             .catch((err) => {
                 console.log(err);
             });
+        
+        navigate('/');
     }
 
     return (
@@ -187,7 +181,7 @@ function PopupForm() {
                         >
                             <option>Status:</option>
                             <option value="Not Prepared">Not Prepared</option>
-                            <option value="In-progres">In-progres</option>
+                            <option value="In-progress">In-progress</option>
                             <option value="Outstanding">Outstanding</option>
                             <option value="Closed">Closed</option>
                         </Form.Select>
